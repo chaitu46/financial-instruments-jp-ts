@@ -26,7 +26,7 @@ export const App:React.FC = () => {
       setData(data);
     });
   }, []);
-
+  // TODO: fix this datatype
   const handleSort = ({ target  }: any) => {
     setSortByColumn(target.textContent);
     switch (target.textContent) {
