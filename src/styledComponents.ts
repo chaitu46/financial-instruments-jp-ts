@@ -1,9 +1,16 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+import { COLORS } from "./constants";
+import { Theme } from "./interfaces";
 
-interface theme{
-  bg: string;
-  color: string;
-}
+export const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+`;
 
 export const StyledTable = styled.table`
   border-collapse: collapse;
@@ -12,7 +19,14 @@ export const StyledTable = styled.table`
   th {
     border: 1px solid grey;
     text-align: left;
+  }
+  td {
     padding: 10px;
+  }
+  th {
+    padding: 0;
+    min-width: 50px;
+    max-width: 100px;
   }
   @media print {
     tbody td,
@@ -22,26 +36,40 @@ export const StyledTable = styled.table`
   }
 `;
 
-export const StyledTr = styled.tr<{'data-theme': theme}>`
+export const StyledTr = styled.tr<{ "data-theme": Theme }>`
   background-color: ${(props) => props["data-theme"].bg};
   color: ${(props) => props["data-theme"].color || "black"};
 `;
-export const StyledPriceTd = styled.td<{'data-bg': string}>`
+export const StyledPriceTd = styled.td<{ "data-bg": string }>`
   background-color: ${(props) => props["data-bg"]};
-  color: var(--white);
+  color: ${COLORS.white};
 `;
 
 export const StyledHeadRow = styled.tr`
-  background-color: var(--dark-grey);
-  color: var(--white);
-  cursor: pointer;
+  background-color: ${COLORS.black};
+  color: ${COLORS.white};
 `;
 
-export const StyledHeaderCell = styled.th<{'data-active': boolean}>`
-  background-color: ${(props) => (props["data-active"] ? "grey" : "")};
-  min-width: 50px;
-  max-width: 100px;
-  &:hover {
-    background-color: grey;
+export const StyledHeaderButton = styled.button<{ "data-active": boolean }>`
+  background-color: ${(props) =>
+    props["data-active"] ? COLORS.darkGrey : "transparent"};
+
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  color: white;
+  border: none;
+  cursor: pointer;
+  &:focus {
+    outline: 1px solid black;
   }
+  &:hover {
+    background-color: ${COLORS.darkGrey};
+  }
+`;
+export const StyledTableContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 `;

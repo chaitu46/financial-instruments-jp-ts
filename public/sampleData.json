@@ -31,7 +31,7 @@
   },
   {
     "ticker": "ETA",
-    "price": 3089.2,
+    "price": -3089.2,
     "assetClass": "Macro"
   },
   {
@@ -41,7 +41,7 @@
   },
   {
     "ticker": "IOTA",
-    "price": 1096.64,
+    "price": -1096.64,
     "assetClass": "Macro"
   },
   {

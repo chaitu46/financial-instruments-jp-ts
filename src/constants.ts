@@ -1,17 +1,30 @@
-export const COLUM_NAMES = ["Asset Class", "Ticker", "Price"];
-export const ASSERT_CUSTOM_ORDER = ["Equities", "Macro", "Credit"];
+export const COLORS = {
+  blue: "#1d4289",
+  red: "#d3273e",
+  green: "#007a78",
+  white: "white",
+  black: "black",
+  darkGrey: "#303030",
+};
 
+export const ASSERT_ID = "assertClass";
+export const TICKER_ID = "ticker";
+export const PRICE_ID = "price";
+
+export const COLUMN_NAMES = ["Asset Class", "Ticker", "Price"];
+export const COLUMN_IDS = [ASSERT_ID, TICKER_ID, PRICE_ID];
+export const ASSERT_CUSTOM_ORDER = ["Equities", "Macro", "Credit"];
 
 export const ROW_THEME = {
   Macro: {
-    bg: "var(--white)",
+    bg: COLORS.white,
   },
   Equities: {
-    bg: "var(--blue)",
-    color: "var(--white)",
+    bg: COLORS.blue,
+    color: COLORS.white,
   },
   Credit: {
-    bg: "var(--green)",
-    color: "var(--white)",
+    bg: COLORS.green,
+    color: COLORS.white,
   },
 };
