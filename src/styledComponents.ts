@@ -73,3 +73,7 @@ export const StyledTableContainer = styled.div`
   align-items: center;
   height: 100%;
 `;
+
+export const StyledAppTitle = styled.h1`
+  text-align: center;
+`;

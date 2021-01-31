@@ -42,5 +42,10 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.7"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/index.js"
+    ]
   }
 }

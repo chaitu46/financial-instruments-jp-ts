@@ -6,7 +6,7 @@ import {
 } from "../constants";
 import { Instrument, SortByColumnType } from "../interfaces";
 
-export default function getSortData(
+export function getSortDataByColumnName(
   sortByColumn: SortByColumnType,
   initialData: Instrument[]
 ) {

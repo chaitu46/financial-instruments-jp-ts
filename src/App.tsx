@@ -1,21 +1,20 @@
+import { SAMPLE_DATA_FETCH_URL } from "./constants";
 import { useFetchData } from "./hooks/useFetchData";
-import { StyledTableContainer } from "./styledComponents";
+import { StyledAppTitle, StyledTableContainer } from "./styledComponents";
 import { Table } from "./Table";
 
-const fetchUrl = './sampleData.json';
-
 export const App: React.FC = () => {
-  const { isLoading, isError, data } = useFetchData(fetchUrl, []);
+  const { isLoading, isError, data } = useFetchData(SAMPLE_DATA_FETCH_URL, []);
 
   if (isError) {
-    return <h1>Sorry, Somethings gone wrong!</h1>;
+    return <StyledAppTitle>Sorry, Somethings gone wrong!</StyledAppTitle>;
   }
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <StyledAppTitle>Loading...</StyledAppTitle>;
   }
   return (
     <div>
-      <h1>Financial Instruments - Assessment</h1>
+      <StyledAppTitle>Financial Instruments - Assessment</StyledAppTitle>
       <StyledTableContainer>
         <Table initialData={data} />
       </StyledTableContainer>

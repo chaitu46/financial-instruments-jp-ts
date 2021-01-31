@@ -7,13 +7,13 @@ import {
   StyledTr,
 } from "./styledComponents";
 import { COLORS, COLUMN_IDS, COLUMN_NAMES, ROW_THEME } from "./constants";
-import getSortData from "./calculations/getSortData";
+import { getSortDataByColumnName } from "./utils";
 import { TableProps } from "./interfaces";
 
 
 export const Table: React.FC<TableProps> = ({ initialData }) => {
   const [sortByColumn, setSortByColumn] = useState<string>();
-  const tableData = useMemo(() => getSortData(sortByColumn, initialData), [sortByColumn, initialData]);
+  const tableData = useMemo(() => getSortDataByColumnName(sortByColumn, initialData), [sortByColumn, initialData]);
   const handleSort = ({ currentTarget: { id } }: React.MouseEvent<HTMLButtonElement>) => {
     if (id !== sortByColumn) {
       setSortByColumn(id);
@@ -21,8 +21,7 @@ export const Table: React.FC<TableProps> = ({ initialData }) => {
   }
 
   return (
-    <StyledTable>
-      <caption>Financial details</caption>
+    <StyledTable aria-label="Financial Details">
       <thead>
         <StyledHeadRow>
           {COLUMN_NAMES.map((name: string, index: number) => (
@@ -31,6 +30,7 @@ export const Table: React.FC<TableProps> = ({ initialData }) => {
                 onClick={handleSort}
                 data-active={COLUMN_IDS[index] === sortByColumn}
                 id={COLUMN_IDS[index]}
+                data-testid={COLUMN_IDS[index]}
               >
                 {name}
               </StyledHeaderButton>
